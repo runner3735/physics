@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+    <h1>This Is Only A Test</h1>
+    <br />
+    <p>{{ test }}</p>
+
+
+      {% for course in test %}
+     
+        <a class="tag" href="">{{ course }}</a>
+    
+      {% endfor %}
+
+
+
+{% endblock %}

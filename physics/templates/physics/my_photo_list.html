@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>My Photos</h1>
+  {% if photo_list %}
+    {% for photo in photo_list %} 
+      <p><a href="{% url 'update-photo' photo.id %}"><img src="{% if photo.thumbnail %}{{ photo.thumbnail.url }}{% else %}{{ photo.imagefile.url }}{% endif %}" alt="picture"></a></p>
+      <p><strong>{{ photo }}</strong></p>
+      <br>
+    {% endfor %}
+  {% else %}
+    <p>You have no contributed photos.</p>
+  {% endif %}       
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Demonstrations In Room {{ room }}</h1>
+
+    {% if room.demo_set.all %}
+    <ul>
+
+      {% for demo in room.demo_set.all %}
+      <li>
+        <a href="{{ demo.get_absolute_url }}">{{ demo.name }}</a> ({{demo.location}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no demos in room {{ room }}.</p>
+    {% endif %}       
+
+{% endblock %}

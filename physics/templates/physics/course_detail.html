@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ course }} Demonstrations</h1>
+
+    {% if course.demo_set.all %}
+    <ul>
+
+      {% for demo in course.demo_set.all %}
+      <li>
+        <a href="{{ demo.get_absolute_url }}">{{ demo.name }}</a> ({{demo.room.text}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no demos in the database associated with {{ course }}.</p>
+    {% endif %}       
+
+{% endblock %}

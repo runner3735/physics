@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  
+  <h1>{{ demo.index }}. {{ demo.name }}</h1>
+  <h2>Manage Tags</h2>
+  <br />
+  {% for tag in demo.keyword_set.all %}
+    <p><strong>{{ tag }} <a href="{% url 'delete-tag' tag.id %}">[delete]</a></strong></p>
+  {% endfor %}
+  <p><strong><a href="{% url 'add-tag' demo.id %}">[add tag]</a></strong></p>
+  <br />
+  <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing tags]</a></strong></p>
+ 
+{% endblock %}

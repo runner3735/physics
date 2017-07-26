@@ -1,0 +1,8 @@
+
+<h1>{{ pic.caption }}</h1>
+
+{% if error_message %}
+  <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<img src="/{{ pic.imagefile.url }}" alt="picture">

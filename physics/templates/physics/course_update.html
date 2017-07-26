@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+    <h1>{{ demo.index }}. {{ demo.name }}</h1>
+    <h3>Update Courses</h3>
+    <br />
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br />
+        <input type="submit" value="Update" />
+    </form>
+    <br />
+    <p><strong>other actions: &nbsp;<a href="{% url 'demo-detail' demo.id %}">[cancel update]</a></strong></p>
+
+{% endblock %}

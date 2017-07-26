@@ -1,0 +1,10 @@
+
+{% if allpics %}
+  <ul>
+  {% for pic in allpics %}
+    <li><a href="{% url 'mypics:detail' pic.id %}">{{ pic.caption }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No photos are available.</p>
+{% endif %}
