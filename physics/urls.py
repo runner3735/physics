@@ -11,6 +11,7 @@ urlpatterns = [
   url(r'^rooms/$', views.RoomListView.as_view(), name='rooms'),
   url(r'^room/(?P<pk>\d+)$', views.RoomDetailView.as_view(), name='room-detail'),
   url(r'^myphotos/$', views.MyPhotosListView.as_view(), name='my-photos'),
+  url(r'^mainphotos/$', views.DemoPhotoView.as_view(), name='main-photos'),
   url(r'^demo/(?P<pk>\d+)/name/$', views.name_update, name='name-update'),
   url(r'^demo/(?P<pk>\d+)/course/$', views.course_update, name='course-update'),
   url(r'^demo/(?P<pk>\d+)/room/$', views.room_update, name='room-update'),

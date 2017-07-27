@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git clone https://github.com/runner3735/physics.git
+
+sudo apt-get install mysql-server
+sudo apt-get install mc
+sudo apt-get install nginx
+sudo apt-get install supervisor
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install python-dev (not needed)
+sudo apt-get install python3-dev
+sudo apt-get install build-essential
+sudo apt-get install python-virtualenv (probably not needed as it's built into python 3)
+
+virtualenv --python=python3.5 env
+source env/bin/activate
+
+pip install mysqlclient
+pip install gunicorn
+pip install Pillow
+pip install django

@@ -43,6 +43,10 @@ class MyPhotosListView(LoginRequiredMixin,generic.ListView):
     def get_queryset(self):
         return Photo.objects.filter(contributor=self.request.user)
 
+class DemoPhotoView(generic.ListView):
+    model = Photo
+    template_name ='physics/main_photo_list.html'
+    paginate_by = 10
 
 def name_update(request, pk):
   demo=get_object_or_404(Demo, pk = pk)
