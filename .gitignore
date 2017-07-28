@@ -4,5 +4,6 @@ __pycache__
 myvenv
 db.sqlite3
 /mysite/media
+/mysite/static
 /mysite/settings.py
 .DS_Store
