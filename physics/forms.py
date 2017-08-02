@@ -58,6 +58,10 @@ class DemoForm(forms.ModelForm):
                'course': forms.CheckboxSelectMultiple(),
                'room': forms.RadioSelect()
                }
+
+  def clean_name(self):
+    return self.cleaned_data['name'].title()
+    
   def __init__(self, *args, **kwargs):
     super(DemoForm, self).__init__(*args, **kwargs)
     self.fields['room'].empty_label = 'Unknown' 

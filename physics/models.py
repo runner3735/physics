@@ -70,9 +70,9 @@ class Demo(models.Model):
   room = models.ForeignKey(Room, on_delete=models.SET_NULL, blank=True, null=True)
   location = models.CharField(max_length=200, blank=True)
   modified = models.DateTimeField(auto_now=True)
-  components = models.ManyToManyField(Component)
-  notes = models.ManyToManyField(Note)
-  tags = models.ManyToManyField(Tag)
+  components = models.ManyToManyField(Component, editable=False)
+  notes = models.ManyToManyField(Note, editable=False)
+  tags = models.ManyToManyField(Tag, editable=False)
 
   class Meta: 
     ordering = ["-id"]
