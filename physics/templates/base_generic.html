@@ -11,7 +11,8 @@
   
   <!-- Add additional CSS in static file -->
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'physics/styles.css' %}">
+  <link rel="shortcut icon" href="{% static 'physics/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -26,9 +27,9 @@
           <hr>
           <li><a href="{% url 'demos' %}">All Demos</a></li>
           <li><a href="{% url 'courses' %}">Demos By Course</a></li>
-          <li><a href="{% url 'rooms' %}">Demos By Location</a></li>
-          <li><a href="{% url 'main-photos' %}">Demos By Photo</a></li>
-          <li><a href="">Demos By Keyword</a></li>
+          <li><a href="{% url 'rooms' %}">Demos By Room</a></li>
+          <li><a href="{% url 'main-photos' %}">Demos By Main Photo</a></li>
+          <li><a href="">Demos By Tag</a></li>
           <li><a href="{% url 'demo_create' %}">Add New Demo</a></li>
           <hr>
           {% if user.is_authenticated %}

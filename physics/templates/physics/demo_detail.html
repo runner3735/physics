@@ -5,10 +5,20 @@
   {% if demo.photo_set %}
   {% for photo in demo.photo_set.all %}
     {% if photo.id == demo.mainphoto %}
-      <p><a href="{% url 'update-photo' photo.id %}"><img src="{% if photo.thumbnail %}{{ photo.thumbnail.url }}{% else %}{{ photo.imagefile.url }}{% endif %}" alt="picture"></a><strong><a href="{{ photo.imagefile.url }}">[full size]</a></strong></p>
+      <a class = "floating" href="{{ photo.imagefile.url }}"><img src="{{ photo.thumbnail.url }}" alt="picture"></a>
     {% endif %}
   {% endfor %}
   {% endif %}
+
+  <div class="metadata">
+  <p><strong><a href="{% url 'course-update' demo.id %}">Courses:</a> {% for course in demo.course.all %} {{ course }}{% if not forloop.last %}, {% endif %}{% endfor %}</strong></p>
+  <p><strong><a href="{% url 'room-update' demo.id %}">Room:</a>{% if demo.room %} {{ demo.room }}{% endif %}</strong></p>
+  <p><strong><a href="{% url 'location-update' demo.id %}">Location:</a> {{ demo.location }}</strong></p>
+  <p><a href="{% url 'manage-tags' demo.id %}"><strong>Tags:</strong></a>
+  {% for tag in demo.tags.all %} <a href="" class="tag">{{ tag }}</a>{% endfor %}</p>
+  <p><a href="{% url 'manage-components' demo.id %}"><strong>Components:</strong></a>
+  {% for component in demo.components.all %} <a href="" class="tag">{{ component }}</a>{% endfor %}</p>
+  </div>
 
   <div class="description">
   {% if demo.description %}
@@ -18,27 +28,13 @@
   {% endif %}
   </div>
 
-  <br />
   <div class="note">
-  {% for note in demo.note_set.all %}
-    <a href="{% url 'update-note' note.id %}">{{ note.contributor }}:</a>{{ note.text | linebreaks }}
+  <p><a href="{% url 'demo-add-note' demo.id %}">[add note]</a></p>
+  {% for note in demo.notes.all %}
+    {{ note.created | date:"Y-m-d" }}<a href="{% url 'demo-update-note' demo.id note.id %}"> {{ note.contributor }}</a>{{ note.text | urlize | linebreaks }}
   {% endfor %}
-  {% if not demo.note_set.all %}
-    <p>There are no notes for this demo.</p>
-  {% endif %}
-  <p><a href="{% url 'add-note' demo.id %}">[add note]</a></p>
   </div>
 
-  <br />
-  <div class="metadata">
-  <p><strong><a href="{% url 'course-update' demo.id %}">Courses:</a> {% for course in demo.course.all %} {{ course }}{% if not forloop.last %}, {% endif %}{% endfor %}</strong></p>
-  <p><strong><a href="{% url 'room-update' demo.id %}">Room:</a>{% if demo.room %} {{ demo.room }}{% endif %}</strong></p>
-  <p><strong><a href="{% url 'location-update' demo.id %}">Location:</a> {{ demo.location }}</strong></p>
-  <p><a href="{% url 'manage-tags' demo.id %}"><strong>Tags:</strong></a>
-  {% for tag in demo.keyword_set.all %} <a href="" class="tag">{{ tag }}</a>{% endfor %}</p>
-  </div>
-
-  <br />
   <div class="attachment">
   {% for attachment in demo.attachment_set.all %}
     <p><a href="{{ attachment.otherfile.url }}">{{ attachment }}</a> ({{ attachment.description }}) <a href="{% url 'update-file' attachment.id %}">[edit]</a></p>
@@ -48,16 +44,19 @@
   {% endif %}
   <p><a href="{% url 'add-file' demo.id %}">[add attachment]</a></p>
   </div>
-  <br />
 
+  <br />
+  <p><strong><a href="{% url 'add-photo' demo.id %}">[add photo]</a></strong></p>
   {% if demo.photo_set %}
   {% for photo in demo.photo_set.all %}
-    {% if photo.id != demo.mainphoto %}
-      <p><a href="{% url 'update-photo' photo.id %}"><img src="{% if photo.thumbnail %}{{ photo.thumbnail.url }}{% else %}{{ photo.imagefile.url }}{% endif %}" alt="picture"></a></p>
-      <p><strong>{{ photo }} <a href="{{ photo.imagefile.url }}">[full size]</a></strong></p>
-    {% endif %}
+    <div class="thumbnail">
+    <p><a href="{% url 'photo-detail' photo.id %}"><img src="{{ photo.thumbnail.url }}" alt="picture"></a></p>
+    {% if photo.caption %}<p><strong>{{ photo }}</strong></p>{% endif %}
+    {% for note in photo.notes.all %}
+      <p><strong>{{ note }}</strong></p>
+    {% endfor %}
+    </div>
   {% endfor %}
   {% endif %}
-  <p><strong><a href="{% url 'add-photo' demo.id %}">[add photo]</a></strong></p>
-
+  
 {% endblock %}

@@ -1,0 +1,72 @@
+[
+{
+    "model": "physics.room",
+    "pk": 1,
+    "fields": {
+        "text": "509"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 2,
+    "fields": {
+        "text": "510"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 3,
+    "fields": {
+        "text": "511"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 4,
+    "fields": {
+        "text": "517"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 5,
+    "fields": {
+        "text": "518"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 6,
+    "fields": {
+        "text": "519"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 7,
+    "fields": {
+        "text": "520"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 8,
+    "fields": {
+        "text": "218"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 9,
+    "fields": {
+        "text": "503"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 10,
+    "fields": {
+        "text": "504"
+    }
+}
+]

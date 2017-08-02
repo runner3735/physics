@@ -1,0 +1,641 @@
+[
+{
+    "model": "physics.course",
+    "pk": 1,
+    "fields": {
+        "text": "PH106"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 2,
+    "fields": {
+        "text": "PH109"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 3,
+    "fields": {
+        "text": "PH110"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 4,
+    "fields": {
+        "text": "PH111"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 5,
+    "fields": {
+        "text": "PH221"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 6,
+    "fields": {
+        "text": "PH321"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 1,
+    "fields": {
+        "text": "509"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 2,
+    "fields": {
+        "text": "510"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 3,
+    "fields": {
+        "text": "511"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 4,
+    "fields": {
+        "text": "517"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 5,
+    "fields": {
+        "text": "518"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 6,
+    "fields": {
+        "text": "519"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 7,
+    "fields": {
+        "text": "520"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 8,
+    "fields": {
+        "text": "218"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 9,
+    "fields": {
+        "text": "503"
+    }
+},
+{
+    "model": "physics.room",
+    "pk": 10,
+    "fields": {
+        "text": "504"
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 1,
+    "fields": {
+        "name": "Schr\u00f6dinger's Cat",
+        "mainphoto": 1,
+        "description": "Schr\u00f6dinger's cat is a thought experiment, sometimes described as a paradox, devised by Austrian physicist Erwin Schr\u00f6dinger in 1935. It illustrates what he saw as the problem of the Copenhagen interpretation of quantum mechanics applied to everyday objects. The scenario presents a cat that may be simultaneously both alive and dead, a state known as a quantum superposition, as a result of being linked to a random subatomic event that may or may not occur. The thought experiment is also often featured in theoretical discussions of the interpretations of quantum mechanics. Schr\u00f6dinger coined the term Verschr\u00e4nkung (entanglement) in the course of developing the thought experiment.",
+        "room": 1,
+        "location": "",
+        "modified": null,
+        "course": [
+            6
+        ]
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 2,
+    "fields": {
+        "name": "Cat Cruising In A Car",
+        "mainphoto": 2,
+        "description": "This demo is a good demonstration of frictional forces and feline inertia.\r\nThis is the second line.",
+        "room": 3,
+        "location": "cabinet above sink",
+        "modified": null,
+        "course": [
+            3,
+            6
+        ]
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 3,
+    "fields": {
+        "name": "Loop The Loop 2",
+        "mainphoto": null,
+        "description": "",
+        "room": 3,
+        "location": "under the sink",
+        "modified": null,
+        "course": [
+            2
+        ]
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 5,
+    "fields": {
+        "name": "New Demo 34",
+        "mainphoto": 7,
+        "description": "",
+        "room": 4,
+        "location": "under table by e/m apparatus",
+        "modified": null,
+        "course": [
+            2,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 6,
+    "fields": {
+        "name": "Sample Demo",
+        "mainphoto": null,
+        "description": "",
+        "room": 4,
+        "location": "",
+        "modified": null,
+        "course": [
+            5
+        ]
+    }
+},
+{
+    "model": "physics.demo",
+    "pk": 7,
+    "fields": {
+        "name": "fluorescent minerals",
+        "mainphoto": null,
+        "description": "",
+        "room": 7,
+        "location": "",
+        "modified": null,
+        "course": [
+            6
+        ]
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 1,
+    "fields": {
+        "demo": 1,
+        "caption": "this is the caption 2",
+        "imagefile": "photos/tumblr_orrkmonMQH1vkgjmeo1_500.png",
+        "contributor": 1,
+        "thumbnail": "thumbs/tumblr_orrkmonMQH1vkgjmeo1_500.png",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 2,
+    "fields": {
+        "demo": 2,
+        "caption": "",
+        "imagefile": "photos/tumblr_orj41bkxPr1vnq1cro1_500.gif",
+        "contributor": 2,
+        "thumbnail": "thumbs/tumblr_orj41bkxPr1vnq1cro1_500.gif",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 3,
+    "fields": {
+        "demo": 1,
+        "caption": "Does this picture make me look fat?",
+        "imagefile": "photos/tumblr_orj7qcvAtj1vkgjmeo1_500.png",
+        "contributor": 1,
+        "thumbnail": "thumbs/tumblr_orj7qcvAtj1vkgjmeo1_500.png",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 4,
+    "fields": {
+        "demo": 1,
+        "caption": "",
+        "imagefile": "photos/tumblr_orn9lnz40P1vkgjmeo1_500.png",
+        "contributor": 1,
+        "thumbnail": "thumbs/tumblr_orn9lnz40P1vkgjmeo1_500.png",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 5,
+    "fields": {
+        "demo": 2,
+        "caption": "",
+        "imagefile": "photos/tumblr_ornvplSzJq1vkgjmeo1_500.png",
+        "contributor": 1,
+        "thumbnail": "thumbs/tumblr_ornvplSzJq1vkgjmeo1_500.png",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 7,
+    "fields": {
+        "demo": 5,
+        "caption": "",
+        "imagefile": "photos/tumblr_orho11Tetz1vkgjmeo1_500.png",
+        "contributor": 1,
+        "thumbnail": "thumbs/tumblr_orho11Tetz1vkgjmeo1_500.png",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 19,
+    "fields": {
+        "demo": 5,
+        "caption": "",
+        "imagefile": "photos/Jellyfish.jpg",
+        "contributor": 1,
+        "thumbnail": "thumbs/Jellyfish.jpg",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 21,
+    "fields": {
+        "demo": 1,
+        "caption": "not a cat",
+        "imagefile": "photos/Jellyfish_NeMw1Ry.jpg",
+        "contributor": 1,
+        "thumbnail": "thumbs/Jellyfish_NeMw1Ry.jpg",
+        "created": null
+    }
+},
+{
+    "model": "physics.photo",
+    "pk": 22,
+    "fields": {
+        "demo": 1,
+        "caption": "nice icon for schrodinger's cat!",
+        "imagefile": "photos/schrocat.jpg",
+        "contributor": 1,
+        "thumbnail": "thumbs/schrocat.jpg",
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 2,
+    "fields": {
+        "demo": 5,
+        "description": "invoice",
+        "otherfile": "attachments/2016.09.27.madgetech.pdf",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 3,
+    "fields": {
+        "demo": 5,
+        "description": "capital equipment spreadsheet",
+        "otherfile": "attachments/cap_equipment_lance.xlsx",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 6,
+    "fields": {
+        "demo": 2,
+        "description": "invoice",
+        "otherfile": "attachments/2016.10.20.amazon.12.99.pdf",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 7,
+    "fields": {
+        "demo": 1,
+        "description": "Short Video",
+        "otherfile": "attachments/IDTIMWYTIM_Schrodingers_Cat.mp4",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 8,
+    "fields": {
+        "demo": 1,
+        "description": "Animated Video",
+        "otherfile": "attachments/Schrodingers_Cat.mp4",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.attachment",
+    "pk": 10,
+    "fields": {
+        "demo": 1,
+        "description": "some notes",
+        "otherfile": "attachments/django_notes.txt",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 1,
+    "fields": {
+        "demo": 1,
+        "text": "The use of double-stick tape keeps the cat from sliding as the box accelerates. Blah!",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 2,
+    "fields": {
+        "demo": 1,
+        "text": "original cat appears to be missing as of 9/23/2016. I've found that a stuffed dinosaur works well as a replacement, and is much lower maintenance. Blah!",
+        "contributor": 2,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 3,
+    "fields": {
+        "demo": 1,
+        "text": "Sample Note",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 4,
+    "fields": {
+        "demo": 1,
+        "text": "this is a new note, and it can be several lines...\r\nline 2\r\nline 3\r\nline 4",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 5,
+    "fields": {
+        "demo": 3,
+        "text": "This is a note",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 9,
+    "fields": {
+        "demo": 5,
+        "text": "Close packing\r\n2 cat version",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 15,
+    "fields": {
+        "demo": 1,
+        "text": "reference: https://en.wikipedia.org/wiki/Schr%C3%B6dinger's_cat",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 16,
+    "fields": {
+        "demo": 1,
+        "text": "line1\r\nline2",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.note",
+    "pk": 17,
+    "fields": {
+        "demo": 1,
+        "text": "this is a new note on july 30",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.photonote",
+    "pk": 1,
+    "fields": {
+        "photo": 1,
+        "text": "This is a\r\nmulti-line\r\nnote",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.photonote",
+    "pk": 2,
+    "fields": {
+        "photo": 1,
+        "text": "here is a second note which isn't that long.",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.photonote",
+    "pk": 3,
+    "fields": {
+        "photo": 1,
+        "text": "Yes, here is a note that is going to be longer than 45 characters after I get done with all this typing.",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.photonote",
+    "pk": 4,
+    "fields": {
+        "photo": 1,
+        "text": "another note",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.photonote",
+    "pk": 5,
+    "fields": {
+        "photo": 1,
+        "text": "another note 2",
+        "contributor": 1,
+        "created": null
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 1,
+    "fields": {
+        "demo": 1,
+        "text": "cat"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 2,
+    "fields": {
+        "demo": 1,
+        "text": "box"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 3,
+    "fields": {
+        "demo": 1,
+        "text": "longhaired"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 4,
+    "fields": {
+        "demo": 2,
+        "text": "cat"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 5,
+    "fields": {
+        "demo": 5,
+        "text": "equilibrium"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 6,
+    "fields": {
+        "demo": 5,
+        "text": "entropy"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 10,
+    "fields": {
+        "demo": 2,
+        "text": "car"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 11,
+    "fields": {
+        "demo": 3,
+        "text": "conservation of energy"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 12,
+    "fields": {
+        "demo": 3,
+        "text": "kinetic energy"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 13,
+    "fields": {
+        "demo": 1,
+        "text": "meow"
+    }
+},
+{
+    "model": "physics.keyword",
+    "pk": 14,
+    "fields": {
+        "demo": 1,
+        "text": "dead austrians"
+    }
+},
+{
+    "model": "physics.component",
+    "pk": 1,
+    "fields": {
+        "demo": 1,
+        "text": "box"
+    }
+},
+{
+    "model": "physics.component",
+    "pk": 2,
+    "fields": {
+        "demo": 1,
+        "text": "cat"
+    }
+},
+{
+    "model": "physics.component",
+    "pk": 3,
+    "fields": {
+        "demo": 1,
+        "text": "uranium"
+    }
+},
+{
+    "model": "physics.component",
+    "pk": 4,
+    "fields": {
+        "demo": 7,
+        "text": "uranyl"
+    }
+}
+]

@@ -21,29 +21,64 @@ div.description {
   background-color:#ede;
   font-weight:bold;
   padding:10pt;
+  margin: 0 15px 15px 0;
+  clear:both;
 }
 
 div.note {
   background-color:#dde;
   font-weight:bold;
   padding:10pt;
+  margin: 0 15px 15px 0;
 }
 
 div.attachment {
   background-color:#edd;
   font-weight:bold;
   padding:10pt;
+  margin: 0 15px 15px 0;
 }
 
 div.metadata {
   background-color:#ded;
+  min-width:480px;
   font-weight:bold;
   padding:10pt;
+  margin: 0 15px 15px 0;
+  overflow:hidden;
 }
 
-a.tag {
+.tag {
   background-color:#000;
   color:#eee;
   font-weight:bold;
   padding:2pt;
 }
+
+div.thumbnail {
+  background-color:#dee;
+  max-width:350px;
+  padding:12px;
+  margin:10px;
+  float:left;
+}
+
+.floating {
+  background-color:#edd;
+  padding:12px;
+  margin: 0 15px 15px 0;
+  float:left;
+}
+
+div.tagbox {
+  background-color:#edd;
+  max-height:800px;
+  width:300px;
+  margin:15px;
+  padding:12px;
+  border:1px solid #000;
+  overflow:auto;
+  float: right;
+}
+
+

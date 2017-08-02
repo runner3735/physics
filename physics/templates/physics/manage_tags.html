@@ -1,14 +1,25 @@
+
 {% extends "base_generic.html" %}
 
 {% block content %}
-  
-  <h1>{{ demo.index }}. {{ demo.name }}</h1>
-  <h2>Manage Tags</h2>
+  <div class="tagbox">
+    <h1>Tags</h1>
+    {% for tag in tags %}
+      <p><a class="tag" href="">{{ tag }}</a></p>
+    {% endfor %}
+  </div>  
+  <h1>{{ demo }}</h1>
+  <h2>Tags</h2>
   <br />
-  {% for tag in demo.keyword_set.all %}
-    <p><strong>{{ tag }} <a href="{% url 'delete-tag' tag.id %}">[delete]</a></strong></p>
+  {% for tag in demo.tags.all %}
+    <p><span class="tag">{{ tag }}</span> <strong><a href="{% url 'demo-delete-tag' demo.id tag.id %}">[x]</a></strong></p>
   {% endfor %}
-  <p><strong><a href="{% url 'add-tag' demo.id %}">[add tag]</a></strong></p>
+  <br />
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <input type="submit" value="Add Tag" />
+    </form>
   <br />
   <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing tags]</a></strong></p>
  

@@ -1,0 +1,15 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>{{ demo }}</h1>
+    <br />
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br />
+        <input type="submit" value="Add Component" />
+    </form>
+
+{% endblock %}

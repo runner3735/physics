@@ -3,10 +3,11 @@
 {% block content %}
   <h1>My Photos</h1>
   {% if photo_list %}
-    {% for photo in photo_list %} 
-      <p><a href="{% url 'update-photo' photo.id %}"><img src="{% if photo.thumbnail %}{{ photo.thumbnail.url }}{% else %}{{ photo.imagefile.url }}{% endif %}" alt="picture"></a></p>
-      <p><strong>{{ photo }}</strong></p>
-      <br>
+    {% for photo in photo_list %}
+      <div class="thumbnail">
+      <a href="{% url 'update-photo' photo.id %}"><img src="{{ photo.thumbnail.url }}" alt="picture"></a>
+      {% if photo.caption %}<p><strong>{{ photo }}</strong></p>{% endif %}
+      </div>
     {% endfor %}
   {% else %}
     <p>You have no contributed photos.</p>

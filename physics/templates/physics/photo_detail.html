@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <h1>{{ photo.demo }}</h1>
+  <br />
+  <p><img src="{{ photo.imagefile.url }}" height=500 alt="picture"></p>
+  {% if photo.caption %}<p><strong>{{ photo }}</strong></p>{% endif %}
+  <p><strong>
+  <a href="{% url 'demo-detail' photo.demo.id %}">[return to demo]</a> &nbsp;&nbsp;
+  <a href="{{ photo.imagefile.url }}">[view full size]</a> &nbsp;&nbsp;
+  <a href="{% url 'update-photo' photo.id %}">[edit caption or replace photo]</a> &nbsp;&nbsp;
+  <a href="{% url 'main-photo' photo.id %}">[set as main photo]</a> &nbsp;&nbsp;
+  <a href="{% url 'delete-photo' photo.id %}">[delete photo]</a>
+  </strong></p>
+
+  <br />
+  <div class="note">
+  <p><a href="{% url 'photo-add-note' photo.id %}">[add note]</a></p>
+  {% for note in photo.notes.all %}
+    <a href="{% url 'photo-update-note' photo.id note.id %}">{{ note.contributor }}</a>{{ note.text | linebreaks }}
+  {% endfor %}
+  </div>
+  <br />
+  <br />
+
+{% endblock %}

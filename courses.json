@@ -1,0 +1,44 @@
+[
+{
+    "model": "physics.course",
+    "pk": 1,
+    "fields": {
+        "text": "PH106"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 2,
+    "fields": {
+        "text": "PH109"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 3,
+    "fields": {
+        "text": "PH110"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 4,
+    "fields": {
+        "text": "PH111"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 5,
+    "fields": {
+        "text": "PH221"
+    }
+},
+{
+    "model": "physics.course",
+    "pk": 6,
+    "fields": {
+        "text": "PH321"
+    }
+}
+]

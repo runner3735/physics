@@ -1,0 +1,22 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>{{ photo.demo }}</h1>
+    <br />
+    <p><img src="{{ photo.thumbnail.url }}" alt="picture"></p>
+    <p><strong>{{ photo }}</strong></p>
+    <br />
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br />
+        <input type="submit" value="Add Note" />
+    </form>
+    <br />
+    <p><strong>other actions: &nbsp;
+    <a href="{% url 'photo-detail' photo.id %}">[cancel]</a>
+    </strong></p>
+
+{% endblock %}

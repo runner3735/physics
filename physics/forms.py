@@ -8,8 +8,8 @@ class NameForm(forms.Form):
   name = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'size': '128'}))
 
 class TagForm(forms.Form):
-  text = forms.CharField(max_length=128, label='Tag', widget=forms.TextInput(attrs={'size': '128'}))
-
+  text = forms.CharField(max_length=128, label='', widget=forms.TextInput(attrs={'size': '80'}))
+  
 class CourseForm(forms.Form):
   course = forms.ModelMultipleChoiceField(queryset=Course.objects.all(), widget=forms.CheckboxSelectMultiple, label='')
   
@@ -28,15 +28,15 @@ class LocationForm(forms.Form):
 
 class NewPhotoForm(forms.Form):
   imagefile = forms.ImageField()
-  caption = forms.CharField(max_length=200, required=False, widget=forms.TextInput(attrs={'size': '103'}))
+  caption = forms.CharField(max_length=200, required=False, widget=forms.TextInput(attrs={'size': '128'}))
 
 class UpdatePhotoForm(forms.Form):
   imagefile = forms.ImageField(required=False, label='Replace With')
-  caption = forms.CharField(max_length=200, required=False, widget=forms.TextInput(attrs={'size': '103'}))
+  caption = forms.CharField(max_length=200, required=False, widget=forms.TextInput(attrs={'size': '128'}))
   
 class NoteForm(forms.Form):
   text = forms.CharField(max_length=2048, label="", widget=forms.Textarea(attrs={'cols': '100', 'rows': '5'}))
-
+  
 class DescriptionForm(forms.Form):
   description = forms.CharField(max_length=2048, required=False, label="", widget=forms.Textarea(attrs={'cols': '100', 'rows': '20'}))
   
