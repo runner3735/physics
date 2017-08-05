@@ -85,13 +85,22 @@ class Demo(models.Model):
 
   def index(self):
     return 'D' + str(self.id).zfill(3)
+
+def get_photo_path(instance, filename):
+    return os.path.join(str(instance.demo.id), filename)
+
+def get_thumb_path(instance, filename):
+  original = os.path.basename(filename)
+  filebase, ext = os.path.splitext(original)
+  thumbpath = os.path.join(str(instance.demo.id), filebase + '.thumb' + ext)
+  return thumbpath
   
 class Photo(models.Model):
   demo = models.ForeignKey(Demo, on_delete=models.CASCADE)
   caption = models.CharField(max_length=200, blank=True, default="")
-  imagefile = models.ImageField(upload_to='photos/')
+  imagefile = models.ImageField(upload_to=get_photo_path)
   contributor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-  thumbnail = models.ImageField(upload_to='thumbs/', editable=False, null=True)
+  thumbnail = models.ImageField(upload_to=get_thumb_path, editable=False, null=True)
   created = models.DateTimeField(auto_now_add=True)
   notes = models.ManyToManyField(Note)
 
@@ -111,7 +120,7 @@ class Photo(models.Model):
     except:
       return
     image.thumbnail((500,500), Image.ANTIALIAS)
-    filename = self.imagefile.name[7:]
+    filename = self.imagefile.name
     if filename.lower().endswith('.jpg'):
       FTYPE = 'JPEG'
     elif filename.lower().endswith('.gif'):
@@ -135,11 +144,14 @@ class Photo(models.Model):
   def delete(self, *args, **kwargs):
     self.delete_images()
     super(Photo, self).delete(*args, **kwargs)
-    
+
+def get_attachment_path(instance, filename):
+    return os.path.join(str(instance.demo.id), filename)
+  
 class Attachment(models.Model):
   demo = models.ForeignKey(Demo, on_delete=models.CASCADE)
   description = models.CharField(max_length=200)
-  otherfile = models.FileField(upload_to='attachments/')
+  otherfile = models.FileField(upload_to=get_attachment_path)
   contributor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
   created = models.DateTimeField(auto_now_add=True)
 
@@ -147,7 +159,7 @@ class Attachment(models.Model):
     ordering = ["created"]
 
   def __str__(self):
-    return self.otherfile.name[12:]
+    return os.path.basename(self.otherfile.name)
 
 
 

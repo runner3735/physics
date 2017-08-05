@@ -36,18 +36,14 @@
   </div>
 
   <div class="attachment">
-  {% for attachment in demo.attachment_set.all %}
-    <p><a href="{{ attachment.otherfile.url }}">{{ attachment }}</a> ({{ attachment.description }}) <a href="{% url 'update-file' attachment.id %}">[edit]</a></p>
-  {% endfor %}
-  {% if not demo.attachment_set %}
-    <p>There are no attachments for this demo.</p>
-  {% endif %}
-  <p><a href="{% url 'add-file' demo.id %}">[add attachment]</a></p>
+    <p><a href="{% url 'add-file' demo.id %}">[add attachment]</a></p>
+    {% for attachment in demo.attachment_set.all %}
+      <p><strong><a href="{% url 'update-file' attachment.id %}">{{ attachment.contributor }}</a>: <a href="{{ attachment.otherfile.url }}">{{ attachment.description }}</a></strong></p>
+    {% endfor %} 
   </div>
 
   <br />
   <p><strong><a href="{% url 'add-photo' demo.id %}">[add photo]</a></strong></p>
-  {% if demo.photo_set %}
   {% for photo in demo.photo_set.all %}
     <div class="thumbnail">
     <p><a href="{% url 'photo-detail' photo.id %}"><img src="{{ photo.thumbnail.url }}" alt="picture"></a></p>
@@ -57,6 +53,5 @@
     {% endfor %}
     </div>
   {% endfor %}
-  {% endif %}
   
 {% endblock %}

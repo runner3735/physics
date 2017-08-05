@@ -1,4 +1,6 @@
 
+import os
+
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views.generic.edit import CreateView
+from django.db.models import F
 
 from .models import Course, Demo, Photo, Room, Note, Attachment, Component, Tag
 from .forms import NameForm, DescriptionForm, CourseForm, RoomForm, LocationForm, DemoForm, NoteForm, TagForm
@@ -57,6 +60,9 @@ class DemoPhotoView(generic.ListView):
     template_name ='physics/main_photo_list.html'
     paginate_by = 10
 
+    def get_queryset(self):
+        return Photo.objects.filter(demo__mainphoto=F('id'))
+      
 @login_required
 def name_update(request, pk):
   demo=get_object_or_404(Demo, pk = pk)
@@ -170,7 +176,6 @@ def delete_photo(request, pk):
   photo=get_object_or_404(Photo, pk = pk)
   demo = photo.demo
   if photo.contributor == request.user:
-    photo.delete_images()
     photo.delete()
   return HttpResponseRedirect(reverse('demo-detail', args=[demo.id]))
 
@@ -191,8 +196,10 @@ def add_file(request, pk):
     if form.is_valid():
       attachment = Attachment()
       attachment.demo = demo
-      attachment.description = form.cleaned_data['description']
       attachment.otherfile = form.cleaned_data['otherfile']
+      attachment.description = form.cleaned_data['description']
+      if not attachment.description:
+        attachment.description = os.path.basename(attachment.otherfile.name)
       attachment.contributor = request.user
       attachment.save()
       return HttpResponseRedirect(reverse('demo-detail', args=[pk]))
@@ -210,7 +217,10 @@ def update_file(request, pk):
     if form.is_valid():
       attachment.description = form.cleaned_data['description']
       if form.cleaned_data['otherfile']:
+        attachment.otherfile.delete()
         attachment.otherfile = form.cleaned_data['otherfile']
+      if not attachment.description:
+        attachment.description = os.path.basename(attachment.otherfile.name)
       attachment.save()
       return HttpResponseRedirect(reverse('demo-detail', args=[attachment.demo.id]))
   else:
@@ -222,6 +232,7 @@ def delete_file(request, pk):
   attachment=get_object_or_404(Attachment, pk = pk)
   demo = attachment.demo
   if attachment.contributor == request.user:
+    attachment.otherfile.delete()
     attachment.delete()
   return HttpResponseRedirect(reverse('demo-detail', args=[demo.id]))
 
@@ -375,8 +386,9 @@ def photo_delete_note(request, photo, note):
 
 def test(request):
   text = "blah"
-  tags = Tag.objects.values_list('text', flat=True).distinct()
-  return render(request, 'physics/test.html', {'tags': tags})
+  #tags = Tag.objects.values_list('text', flat=True).distinct()
+  obs = Photo.objects.filter(demo__mainphoto=F('id'))
+  return render(request, 'physics/test.html', {'obs': obs})
 
 
     

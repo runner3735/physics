@@ -1,16 +1,17 @@
+
 {% extends "base_generic.html" %}
 
 {% block content %}
+
   <h1>Demos By Photo</h1>
-  {% if photo_list %}
-    {% for photo in photo_list %}
-      {% if photo.id == photo.demo.mainphoto %}
-        <p><a href="{{ photo.demo.get_absolute_url }}"><img src="{% if photo.thumbnail %}{{ photo.thumbnail.url }}{% else %}{{ photo.imagefile.url }}{% endif %}" alt="picture"></a></p>
-        <p><strong>{{ photo.demo }}</strong></p>
-        <br>
-      {% endif %}
-    {% endfor %}
-  {% else %}
-    <p>There are no photos.</p>
-  {% endif %}       
+
+  {% for photo in photo_list %}
+    {% if photo.id == photo.demo.mainphoto %}
+      <div class="thumbnail">
+      <p><a href="{{ photo.demo.get_absolute_url }}"><img src="{{ photo.thumbnail.url }}" alt="picture"></a></p>
+      <p><strong>{{ photo.demo }}</strong></p>
+      </div>
+    {% endif %}
+  {% endfor %}
+
 {% endblock %}
