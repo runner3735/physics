@@ -1,6 +1,7 @@
 
-import os
+import os, subprocess
 
+from django.conf import settings
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -235,6 +236,28 @@ def delete_file(request, pk):
     attachment.otherfile.delete()
     attachment.delete()
   return HttpResponseRedirect(reverse('demo-detail', args=[demo.id]))
+
+@login_required
+def convert_file(request, pk):
+  attachment=get_object_or_404(Attachment, pk = pk)
+  pdfpath = os.path.join(settings.MEDIA_ROOT, attachment.otherfile.name)
+  if pdfpath.lower().endswith('.pdf'):
+    jpgpath = pdfpath[:-4] + '.jpg'
+    if not os.path.exists(jpgpath):
+      if convert_pdf(pdfpath, jpgpath):
+        photo = Photo()
+        photo.demo = attachment.demo
+        photo.caption = os.path.basename(jpgpath)
+        photo.imagefile.name = attachment.otherfile.name[:-4] + '.jpg'
+        photo.contributor = request.user
+        photo.make_thumbnail()
+        photo.save()        
+  return HttpResponseRedirect(reverse('demo-detail', args=[attachment.demo.id]))
+
+def convert_pdf(pdfpath, jpgpath):
+  result = subprocess.call(['gs','-sDEVICE=jpeg','-dNOPAUSE','-dQUIET','-dBATCH','-r144','-sOutputFile=' + jpgpath,pdfpath])
+  if not result:
+    return True
 
 # Tag
 

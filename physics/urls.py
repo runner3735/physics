@@ -47,6 +47,7 @@ urlpatterns = [
   
   url(r'^attachment/(?P<pk>\d+)/delete/$', views.delete_file, name='delete-file'),
   url(r'^attachment/(?P<pk>\d+)/update/$', views.update_file, name='update-file'),
+  url(r'^attachment/(?P<pk>\d+)/convert/$', views.convert_file, name='convert-file'),
   
   url(r'^test/$', views.test, name='test'),
 ]

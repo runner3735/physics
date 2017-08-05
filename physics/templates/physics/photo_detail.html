@@ -4,7 +4,7 @@
 
   <h1>{{ photo.demo }}</h1>
   <br />
-  <p><img src="{{ photo.imagefile.url }}" height=500 alt="picture"></p>
+  <p><img src="{{ photo.thumbnail.url }}" alt="picture"></p>
   {% if photo.caption %}<p><strong>{{ photo }}</strong></p>{% endif %}
   <p><strong>
   <a href="{% url 'demo-detail' photo.demo.id %}">[return to demo]</a> &nbsp;&nbsp;

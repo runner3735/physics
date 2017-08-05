@@ -1,3 +1,4 @@
+
 {% extends "base_generic.html" %}
 {% block content %}
 
@@ -11,6 +12,10 @@
         <input type="submit" value="Update" />
     </form>
     <p></p>
-    <p><strong>other actions: &nbsp;<a href="{% url 'demo-detail' attachment.demo.id %}">[cancel update]</a> &nbsp;&nbsp;<a href="{% url 'delete-file' attachment.id %}">[delete attachment]</a></strong></p>
+    <p><strong>other actions: &nbsp;
+    <a href="{% url 'demo-detail' attachment.demo.id %}">[cancel update]</a> &nbsp;&nbsp;
+    <a href="{% url 'convert-file' attachment.id %}">[convert pdf to jpg]</a> &nbsp;&nbsp;
+    <a href="{% url 'delete-file' attachment.id %}">[delete attachment]</a>
+    </strong></p>
 
 {% endblock %}
