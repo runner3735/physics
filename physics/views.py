@@ -146,7 +146,8 @@ def add_photo(request, pk):
       photo.caption = form.cleaned_data['caption']
       photo.imagefile = form.cleaned_data['imagefile']
       photo.contributor = request.user
-      photo.make_thumbnail()
+      photo.save()
+      photo.make_thumbnail(0)
       photo.save()
       return HttpResponseRedirect(reverse('demo-detail', args=[demo.id]))
   else:
@@ -165,12 +166,20 @@ def update_photo(request, pk):
       if form.cleaned_data['imagefile']:
         photo.delete_images()
         photo.imagefile = form.cleaned_data['imagefile']
-        photo.make_thumbnail()
+        photo.save()
+        photo.make_thumbnail(0)
       photo.save()
       return HttpResponseRedirect(reverse('photo-detail', args=[photo.id]))
   else:
     form = UpdatePhotoForm(initial={'caption': photo.caption})
   return render(request, 'physics/update_photo.html', {'form': form, 'photo': photo})
+
+@login_required
+def photo_rotate(request, photo, degrees):
+  photo=get_object_or_404(Photo, pk=photo)
+  if request.user == photo.contributor:
+    photo.make_thumbnail(int(degrees))
+  return HttpResponseRedirect(reverse('photo-detail', args=[photo.id]))
 
 @login_required
 def delete_photo(request, pk):

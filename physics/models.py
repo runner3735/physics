@@ -1,6 +1,7 @@
 
 import os
 
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -113,29 +114,36 @@ class Photo(models.Model):
   def save(self, *args, **kwargs):
     super(Photo, self).save(*args, **kwargs)
           
-  def make_thumbnail(self):
+  def make_thumbnail_old(self):
     self.save()
     try:
       image = Image.open(self.imagefile)
     except:
       return
     image.thumbnail((500,500), Image.ANTIALIAS)
-    filename = self.imagefile.name
-    if filename.lower().endswith('.jpg'):
-      FTYPE = 'JPEG'
-    elif filename.lower().endswith('.gif'):
-      FTYPE = 'GIF'
-    elif filename.lower().endswith('.png'):
-      FTYPE = 'PNG'
-    else:
-      return
     tempfile = BytesIO()
-    image.save(tempfile, FTYPE)
+    image.save(tempfile, image.format)
     tempfile.seek(0)
     content = ContentFile(tempfile.read())
     tempfile.close()
-    self.thumbnail.save(filename, content, save=False)
+    self.thumbnail.save(self.imagefile.name, content, save=False)
 
+  def make_thumbnail(self, degrees):
+    if self.thumbnail:
+      self.thumbnail.delete()
+    try:
+      image = Image.open(self.imagefile)
+    except:
+      return
+    image.thumbnail((500,500), Image.ANTIALIAS)
+    if degrees:
+      image = image.rotate(degrees, expand=True)
+    pathbase, ext = os.path.splitext(self.imagefile.name)
+    self.thumbnail.name = os.path.join(pathbase + '.r' + str(degrees) + ext)
+    thumbpath = os.path.join(settings.MEDIA_ROOT, self.thumbnail.name)
+    image.save(thumbpath)
+    self.save()
+    
   def delete_images(self):
     self.imagefile.delete()
     if self.thumbnail:

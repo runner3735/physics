@@ -11,7 +11,11 @@
   <a href="{{ photo.imagefile.url }}">[view full size]</a> &nbsp;&nbsp;
   <a href="{% url 'update-photo' photo.id %}">[edit caption or replace photo]</a> &nbsp;&nbsp;
   <a href="{% url 'main-photo' photo.id %}">[set as main photo]</a> &nbsp;&nbsp;
-  <a href="{% url 'delete-photo' photo.id %}">[delete photo]</a>
+  <a href="{% url 'delete-photo' photo.id %}">[delete photo]</a><br />
+  <a href="{% url 'photo-rotate' photo.id 90 %}">[rotate photo CCW]</a> &nbsp;&nbsp;
+  <a href="{% url 'photo-rotate' photo.id 270 %}">[rotate photo CW]</a> &nbsp;&nbsp;
+  <a href="{% url 'photo-rotate' photo.id 180 %}">[flip photo]</a> &nbsp;&nbsp;
+  <a href="{% url 'photo-rotate' photo.id 0 %}">[regenerate thumbnail]</a>
   </strong></p>
 
   <br />

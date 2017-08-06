@@ -42,6 +42,7 @@ urlpatterns = [
   url(r'^demo/(?P<demo>\d+)/update-note/(?P<note>\d+)/$', views.demo_update_note, name='demo-update-note'),
   url(r'^demo/(?P<demo>\d+)/delete-note/(?P<note>\d+)/$', views.demo_delete_note, name='demo-delete-note'),
   url(r'^photo/(?P<pk>\d+)/add-note/$', views.photo_add_note, name='photo-add-note'),
+  url(r'^photo/(?P<photo>\d+)/rotate/(?P<degrees>\d+)/$', views.photo_rotate, name='photo-rotate'),
   url(r'^photo/(?P<photo>\d+)/update-note/(?P<note>\d+)/$', views.photo_update_note, name='photo-update-note'),
   url(r'^photo/(?P<photo>\d+)/delete-note/(?P<note>\d+)/$', views.photo_delete_note, name='photo-delete-note'),
   
