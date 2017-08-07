@@ -3,6 +3,12 @@
 {% block content %}
 
 <h1>Add New Demo</h1>
+  <ul>
+    <li><strong>Only the Name and Course are required to be filled out (you must specify at least one course).</strong></li>
+    <li><strong>Multiple courses can be specified, but only one room.</strong></li>
+    <li><strong>The Name will be automatically capitalized (first letter of each word). You can edit the name later and adjust the capitalization
+    in the rare case this is not appropriate.</strong></li>
+  </ul>
 <form action="" method="post">
     {% csrf_token %}
     <br />

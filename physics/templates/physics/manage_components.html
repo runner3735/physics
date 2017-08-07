@@ -23,5 +23,16 @@
   </form>
   <br />
   <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing components]</a></strong></p>
+  <ul>
+    <li><strong>Components will be automatically set to lower case.</strong>
+    This will help to create a unified style for the site, and avoid duplicates that differ only by case.  This will also make searches easier from a coding
+    and performance perspective.</li>
+    <li><strong>Components should be singular</strong> (e.g., <strong>mass, 1 kg</strong> not <strong>5 1kg masses</strong>.
+    If a particular demo will require a particular number of a given component, that should be specified in the demo description.</li>
+    <li><strong>Components should be specific</strong> (e.g., <strong>beaker, 3 liter</strong> not <strong>beaker</strong>.</li>
+    <li>It is preferred to specify a component as <strong>beaker, 3 liter</strong> and not <strong>3 liter beaker</strong>.
+    This way, similar components (e.g., beakers) will appear together in the alphabetical list.</li>
+    <li>In the near future, components will have pictures associated with them.  This is another reason for them to be singular and specific.</li>
+  </ul>
  
 {% endblock %}

@@ -18,6 +18,7 @@ sudo apt-get install mysql-server
 sudo apt-get install mc
 sudo apt-get install nginx
 sudo apt-get install supervisor
+sudo apt-get install ghostscript
 sudo apt-get install libmysqlclient-dev
 sudo apt-get install python-dev (not needed)
 sudo apt-get install python3-dev
