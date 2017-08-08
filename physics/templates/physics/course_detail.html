@@ -4,7 +4,7 @@
   <h1>{{ course }} Demonstrations</h1>
 
     {% if course.demo_set.all %}
-    <ul>
+    <strong><ul>
 
       {% for demo in course.demo_set.all %}
       <li>
@@ -12,9 +12,9 @@
       </li>
       {% endfor %}
 
-    </ul>
+    </ul></strong>
     {% else %}
-      <p>There are no demos in the database associated with {{ course }}.</p>
+      <p><strong>There are no demos in the database associated with {{ course }}.</strong></p>
     {% endif %}       
 
 {% endblock %}

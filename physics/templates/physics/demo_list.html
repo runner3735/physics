@@ -1,19 +1,16 @@
+
 {% extends "base_generic.html" %}
 
 {% block content %}
+
     <h1>Demo List</h1>
 
-    {% if demo_list %}
-    <ul>
-
+    <strong><ul>
       {% for demo in demo_list %}
       <li>
         <a href="{{ demo.get_absolute_url }}">{{ demo.name }}</a> ({{demo.room.text}})
       </li>
       {% endfor %}
-
-    </ul>
-    {% else %}
-      <p>There are no demos in the database.</p>
-    {% endif %}       
+    </ul></strong>
+      
 {% endblock %}

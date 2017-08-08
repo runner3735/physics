@@ -1,0 +1,28 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Component: {{ component }}</h1>
+
+    <br />
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br />
+        <input type="submit" value="Update" />
+    </form>
+    <br />
+
+    <p><strong><a href="{% url 'component' component.id %}">[cancel update]</a></strong></p>
+
+    {% if component.demo_set.all %}
+      <p><strong>If you edit this component, the edit will apply to all of the demos listed below. Make sure that is what you want to do.</strong></p>
+      <ul>
+        {% for demo in component.demo_set.all %}
+          <li><a href="{% url 'demo-detail' demo.id %}">{{ demo }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+{% endblock %}

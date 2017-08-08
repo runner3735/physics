@@ -1,0 +1,26 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <h1>Tag: {{ tag }}</h1>
+
+    {% if tag.demo_set.all %}
+    <strong><ul>
+      {% for demo in tag.demo_set.all %}
+      <li>
+        <a href="{% url 'demo-detail' demo.id %}">{{ demo }}</a> ({{ demo.room }})
+      </li>
+      {% endfor %}
+    </ul></strong>
+    {% else %}
+      <p>There are no demos in the database associated with <strong>{{ tag }}</strong>.</p>
+    {% endif %} 
+      
+    <p><strong><a href="{% url 'tags' %}">[return to tag list]</a> &nbsp;<a href="{% url 'update-tag' tag.id %}">[edit tag]</a> &nbsp;<a href="{% url 'delete-tag' tag.id %}">[delete tag]</a></strong></p>
+
+  <ul>
+    <li><strong>You cannot delete a tag if there are demos associated with the tag.  You must first remove the tag from each associated demo.</strong></li>
+  </ul>
+
+{% endblock %}

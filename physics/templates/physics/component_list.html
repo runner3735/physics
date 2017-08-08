@@ -1,0 +1,11 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>All Components</h1>
+
+  {% for component in component_list %}
+    <p><a class="tag" href="{% url 'component' component.id %}">{{ component }}</a></p>
+  {% endfor %}
+
+{% endblock %}

@@ -1,7 +1,10 @@
+
 {% extends "base_generic.html" %}
+
 {% block content %}
 
     <h1>{{ demo }}</h1>
+
     <br />
     <form action="" method="post">
         {% csrf_token %}
@@ -10,6 +13,7 @@
         <input type="submit" value="Update" />
     </form>
     <br />
+
     <p><strong>other actions: &nbsp;
     <a href="{% url 'demo-detail' demo.id %}">[cancel update]</a> &nbsp;&nbsp;
     <a href="{% url 'demo-delete-note' demo.id note.id %}">[delete note]</a></strong></p>

@@ -3,16 +3,15 @@
 
 {% block content %}
   <div class="tagbox">
-    <h1>Tags</h1>
+    <h1>All Tags</h1>
     {% for tag in tags %}
-      <p><a class="tag" href="">{{ tag }}</a></p>
+      <p><a class="tag" href="{% url 'demo-add-tag' demo.id tag.id %}">{{ tag }}</a></p>
     {% endfor %}
   </div>  
   <h1>{{ demo }}</h1>
-  <h2>Tags</h2>
   <br />
   {% for tag in demo.tags.all %}
-    <p><span class="tag">{{ tag }}</span> <strong><a href="{% url 'demo-delete-tag' demo.id tag.id %}">[x]</a></strong></p>
+    <p><a class="tag" href="{% url 'tag' tag.id %}">{{ tag }}</a> <strong><a href="{% url 'demo-delete-tag' demo.id tag.id %}">[x]</a></strong></p>
   {% endfor %}
   <br />
     <form action="" method="post">
@@ -23,6 +22,7 @@
   <br />
   <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing tags]</a></strong></p>
   <ul>
+    <li>Just click on a tag in the "All Tags" list to add it to the demo!</li>
     <li><strong>Tags will be automatically set to lower case.</strong>
     This will help to create a unified style for the site, and avoid duplicates that differ only by case.  This will also make searches easier from a coding
     and performance perspective.</li>

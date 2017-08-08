@@ -1,0 +1,25 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Component: {{ component }}</h1>
+
+    {% if component.demo_set.all %}
+    <strong><ul>
+      {% for demo in component.demo_set.all %}
+      <li>
+        <a href="{% url 'demo-detail' demo.id %}">{{ demo }}</a> ({{ demo.room }})
+      </li>
+      {% endfor %}
+    </ul></strong>
+    {% else %}
+      <p>There are no demos in the database associated with <strong>{{ component }}</strong>.</p>
+    {% endif %}       
+    <p><strong><a href="{% url 'components' %}">[return to component list]</a> &nbsp;<a href="{% url 'update-component' component.id %}">[edit component]</a> &nbsp;<a href="{% url 'delete-component' component.id %}">[delete component]</a></strong></p>
+
+  <ul>
+    <li><strong>If you edit a component, this edit will apply to all of the demos listed above.  Make sure that is what you want to do.</strong></li>
+    <li><strong>You cannot delete a component if there are demos associated with the component.  You must first remove the component from each associated demo.</strong></li>
+  </ul>
+
+{% endblock %}

@@ -14,10 +14,10 @@
   <p><strong><a href="{% url 'course-update' demo.id %}">Courses:</a> {% for course in demo.course.all %} {{ course }}{% if not forloop.last %}, {% endif %}{% endfor %}</strong></p>
   <p><strong><a href="{% url 'room-update' demo.id %}">Room:</a>{% if demo.room %} {{ demo.room }}{% endif %}</strong></p>
   <p><strong><a href="{% url 'location-update' demo.id %}">Location:</a> {{ demo.location }}</strong></p>
-  <p><a href="{% url 'manage-tags' demo.id %}"><strong>Tags:</strong></a>
-  {% for tag in demo.tags.all %} <a href="" class="tag">{{ tag }}</a>{% endfor %}</p>
-  <p><a href="{% url 'manage-components' demo.id %}"><strong>Components:</strong></a>
-  {% for component in demo.components.all %} <a href="" class="tag">{{ component }}</a>{% endfor %}</p>
+  <p><a href="{% url 'demo-tags' demo.id %}"><strong>Tags:</strong></a>
+  {% for tag in demo.tags.all %} <a href="{% url 'tag' tag.id %}" class="tag">{{ tag }}</a>{% endfor %}</p>
+  <p><a href="{% url 'demo-components' demo.id %}"><strong>Components:</strong></a>
+  {% for component in demo.components.all %} <a href="{% url 'component' component.id %}" class="tag">{{ component }}</a>{% endfor %}</p>
   </div>
 
   <div class="description">

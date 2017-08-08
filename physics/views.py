@@ -39,6 +39,18 @@ class DemoDetailView(generic.DetailView):
 class CourseListView(generic.ListView):
   model = Course
 
+class TagListView(generic.ListView):
+  model = Tag
+
+class ComponentListView(generic.ListView):
+  model = Component
+  
+class TagDetailView(generic.DetailView):
+  model = Tag
+
+class ComponentDetailView(generic.DetailView):
+  model = Component
+  
 class CourseDetailView(generic.DetailView):
   model = Course
     
@@ -271,15 +283,29 @@ def convert_pdf(pdfpath, jpgpath):
 # Tag
 
 @login_required
-def delete_tag(request, pk):
-  tag=get_object_or_404(Tag, pk = pk)
-  tag.delete()
-  return HttpResponseRedirect(reverse('tags'))                             
+def update_tag(request, tag):
+  tag=get_object_or_404(Tag, pk = tag)
+  if request.method == 'POST':
+    form = TagForm(request.POST)
+    if form.is_valid():
+      tag.text = form.cleaned_data['text']
+      tag.save()
+      return HttpResponseRedirect(reverse('tag', args=[tag.id]))
+  else:
+    form = TagForm(initial={'text': tag.text})
+  return render(request, 'physics/update_tag.html', {'form': form, 'tag': tag})
+
+@login_required
+def delete_tag(request, tag):
+  tag=get_object_or_404(Tag, pk = tag)
+  if tag.demo_set.count() == 0:
+    tag.delete()
+    return HttpResponseRedirect(reverse('tags'))
+  return HttpResponseRedirect(reverse('tag', args=[tag.id]))
                           
 @login_required
-def manage_tags(request, pk):
+def demo_tags(request, pk):
   demo=get_object_or_404(Demo, pk = pk)
-  tags = Tag.objects.values_list('text', flat=True)
   if request.method == 'POST':
     form = TagForm(request.POST)
     if form.is_valid():
@@ -292,27 +318,49 @@ def manage_tags(request, pk):
       form = TagForm()
   else:
     form = TagForm()
-  return render(request, 'physics/manage_tags.html', {'form': form, 'demo': demo, 'tags': tags})
+  tags = Tag.objects.all()
+  return render(request, 'physics/demo_tags.html', {'form': form, 'demo': demo, 'tags': tags})
 
 @login_required
 def demo_delete_tag(request, demo, tag):
   demo=get_object_or_404(Demo, pk = demo)
   tag=get_object_or_404(Tag, pk = tag)
   demo.tags.remove(tag)
-  return HttpResponseRedirect(reverse('manage-tags', args=[demo.id]))
+  return HttpResponseRedirect(reverse('demo-tags', args=[demo.id]))
+
+@login_required
+def demo_add_tag(request, demo, tag):
+  demo=get_object_or_404(Demo, pk = demo)
+  tag=get_object_or_404(Tag, pk = tag)
+  demo.tags.add(tag)
+  return HttpResponseRedirect(reverse('demo-tags', args=[demo.id]))
 
 # Component
 
 @login_required
-def delete_component(request, pk):
-  component=get_object_or_404(Component, pk = pk)
-  component.delete()
-  return HttpResponseRedirect(reverse('components'))                             
+def update_component(request, component):
+  component=get_object_or_404(Component, pk = component)
+  if request.method == 'POST':
+    form = TagForm(request.POST)
+    if form.is_valid():
+      component.name = form.cleaned_data['text']
+      component.save()
+      return HttpResponseRedirect(reverse('component', args=[component.id]))
+  else:
+    form = TagForm(initial={'text': component.name})
+  return render(request, 'physics/update_component.html', {'form': form, 'component': component})
+
+@login_required
+def delete_component(request, component):
+  component=get_object_or_404(Component, pk = component)
+  if component.demo_set.count() == 0:
+    component.delete()
+    return HttpResponseRedirect(reverse('components'))
+  return HttpResponseRedirect(reverse('component', args=[component.id]))                          
                           
 @login_required
-def manage_components(request, pk):
+def demo_components(request, pk):
   demo=get_object_or_404(Demo, pk = pk)
-  components = Component.objects.values_list('name', flat=True)
   if request.method == 'POST':
     form = TagForm(request.POST)
     if form.is_valid():
@@ -325,14 +373,23 @@ def manage_components(request, pk):
       form = TagForm()
   else:
     form = TagForm()
-  return render(request, 'physics/manage_components.html', {'form': form, 'demo': demo, 'components': components})
+  #components = Component.objects.values_list('name', flat=True)
+  components = Component.objects.all()
+  return render(request, 'physics/demo_components.html', {'form': form, 'demo': demo, 'components': components})
+
+@login_required
+def demo_add_component(request, demo, component):
+  demo=get_object_or_404(Demo, pk = demo)
+  component=get_object_or_404(Component, pk = component)
+  demo.components.add(component)
+  return HttpResponseRedirect(reverse('demo-components', args=[demo.id]))
 
 @login_required
 def demo_delete_component(request, demo, component):
   demo=get_object_or_404(Demo, pk = demo)
   component=get_object_or_404(Component, pk = component)
   demo.components.remove(component)
-  return HttpResponseRedirect(reverse('manage-components', args=[demo.id]))
+  return HttpResponseRedirect(reverse('demo-components', args=[demo.id]))
 
 # Note
 

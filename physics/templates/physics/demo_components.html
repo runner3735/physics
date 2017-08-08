@@ -4,16 +4,15 @@
 {% block content %}
 
   <div class="tagbox">
-    <h1>Components</h1>
+    <h1>All Components</h1>
     {% for component in components %}
-      <p><a class="tag" href="">{{ component }}</a></p>
+      <p><a class="tag" href="{% url 'demo-add-component' demo.id component.id %}">{{ component }}</a></p>
     {% endfor %}
   </div>    
   <h1>{{ demo }}</h1>
-  <h2>Components</h2>
   <br />
   {% for component in demo.components.all %}
-    <p><span class="tag">{{ component }}</span> <strong><a href="{% url 'demo-delete-component' demo.id component.id %}">[x]</a></strong></p>
+    <p><a class="tag" href="{% url 'component' component.id %}">{{ component }}</a> <strong><a href="{% url 'demo-delete-component' demo.id component.id %}">[x]</a></strong></p>
   {% endfor %}
   <br />
   <form action="" method="post">
@@ -24,12 +23,13 @@
   <br />
   <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing components]</a></strong></p>
   <ul>
+    <li>Just click on a component in the "All Components" list to add it to the demo!</li>
     <li><strong>Components will be automatically set to lower case.</strong>
     This will help to create a unified style for the site, and avoid duplicates that differ only by case.  This will also make searches easier from a coding
     and performance perspective.</li>
-    <li><strong>Components should be singular</strong> (e.g., <strong>mass, 1 kg</strong> not <strong>5 1kg masses</strong>.
+    <li><strong>Components should be singular</strong> (e.g., <strong>mass, 1 kg</strong> not <strong>five 1kg masses</strong>).
     If a particular demo will require a particular number of a given component, that should be specified in the demo description.</li>
-    <li><strong>Components should be specific</strong> (e.g., <strong>beaker, 3 liter</strong> not <strong>beaker</strong>.</li>
+    <li><strong>Components should be specific</strong> (e.g., <strong>beaker, 3 liter</strong> not <strong>beaker</strong>).</li>
     <li>It is preferred to specify a component as <strong>beaker, 3 liter</strong> and not <strong>3 liter beaker</strong>.
     This way, similar components (e.g., beakers) will appear together in the alphabetical list.</li>
     <li>In the near future, components will have pictures associated with them.  This is another reason for them to be singular and specific.</li>
