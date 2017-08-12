@@ -23,8 +23,8 @@
   <p><strong><a href="{% url 'demo-detail' demo.id %}">[done managing tags]</a></strong></p>
   <ul>
     <li>Just click on a tag in the "All Tags" list to add it to the demo!</li>
-    <li><strong>Tags will be automatically set to lower case.</strong>
+    <li><strong>Tags will be automatically set to lower case.</strong>{% if False %}
     This will help to create a unified style for the site, and avoid duplicates that differ only by case.  This will also make searches easier from a coding
-    and performance perspective.</li>
+    and performance perspective.{% endif %}</li>
   </ul>
 {% endblock %}
